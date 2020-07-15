@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="display-4" align="center">Easy Hisab</h1>
+<p class="lead font-italic" align="center">Here is All Your Details</p>
+<hr class="my-4">
+<table class="table table-borderless">
+    <thead class="border-bottom">
+    <tr>
+        <td align="center" class="font-weight-bold">Income</td>
+        {% if pre_income == 0 %}
+        <td align="center">No record</td>
+        {% else %}
+        <td align="center">{{ pre_income }}</td>
+        {% endif %}
+        <td align="center">
+            <a href="{% url 'list-income' %}" class="btn text-secondary px-0">
+                <i class="fas fa-info-circle fa-lg text-info"></i> Info
+            </a>
+        </td>
+        <td align="center">
+            <a href="{% url 'add-income' %}" class="btn text-secondary px-0">
+                <i class="fas fa-plus-circle fa-lg text-danger"></i> Add
+            </a>
+        </td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td align="center" class="font-weight-bold">Expenses</td>
+        {% if pre_expenses == 0 %}
+        <td align="center">No record</td>
+        {% else %}
+        <td align="center">{{pre_expenses}}</td>
+        {% endif %}
+        <td align="center">
+            <a href="{% url 'list-expenses' %}" class="btn text-secondary px-0">
+                <i class="fas fa-info-circle fa-lg text-info"></i> Info
+            </a>
+        </td>
+        <td align="center">
+            <a href="{% url 'add-expenses' %}" class="btn text-secondary px-0">
+                <i class="fas fa-plus-circle fa-lg text-danger"></i> Add
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+{% endblock %}
+
+<!--
+<div class="">
+  <div class="container">
+    <a type="button" href="{% url 'list-income' %}" style="width:auto;" class="btn btn-info btn-sm">
+      {% if pre_income != 0 %}
+      {{ pre_income }}
+      {% else %}
+      <h6>No income added</h6>
+      {% endif %}
+    </a>
+    <a href="{% url 'add-income' %}" class="btn btn-danger">Add Income</a>
+    <a href="{% url 'list-income' %}" style="width:auto;" class="btn btn-primary">List</a>
+  </div>
+</div>
+<hr class="my-4">
+<div class="">
+  <div class="container">
+    <a href="{% url 'list-expenses' %}" style="width:auto;" class="btn btn-info btn-sm">
+      {% if pre_expenses != 0 %}
+      {{ pre_expenses }}
+      {% else %}
+      <h6>No expenses added</h6>
+      {% endif %}
+    </a>
+    <a href="{% url 'add-expenses' %}" style="width:auto;" class="btn btn-danger">Add Expenses</a>
+    <a href="{% url 'set-budget' %}" style="width:auto;" class="btn btn-primary">Set Budget</a>
+    <a href="#" style="width:auto;" class="btn btn-primary">AddTodo</a>
+  </div>
+</div>
+<hr class="my-4">
+
+-->

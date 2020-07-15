@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="display-4" align="center">Easy Hisab</h1>
+<p class="lead font-italic" align="center">List of All Income</p>
+<hr class="my-4">
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+    <tr>
+        <td align="center">Income</td>
+        <td align="center">Date</td>
+        <td align="center">Remark</td>
+        <td align="center">
+            <a href="{% url 'add-income' %}" class="btn btn-outline-success">
+                <i class="fas fa-plus"></i> Add New
+            </a>
+        </td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for income in all_income %}
+    <tr>
+        <td align="center">{{income.income}}</td>
+        <td align="center">{{income.date_added}}</td>
+        <td align="center">{{income.remark}}</td>
+        <td align="center">
+            <a href="{% url 'update-income' income.id %}" class="btn text-secondary px-0">
+                <i class="far fa-edit fa-lg"></i>
+            </a>
+            <form action="/deleteincome/{{ income.id }}/" method="post" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn">
+                    <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                </button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div class="row">
+    <div class="col-md-12">
+        {% if income == 0 %}
+        <h3 align="center" class="text-muted">No Record</h3>
+        {% endif %}
+    </div>
+</div>
+<hr class="my-4">
+<div class="row">
+    <div class="col-md-12">
+        <a href="{% url 'home' %}" class="btn btn-secondary btn-block btn-lg">
+            <i class="fas fa-home"></i> Back to Home
+        </a>
+    </div>
+</div>
+{% endblock %}
